@@ -19,3 +19,8 @@ export interface NewsApiResponse {
     totalResults: number;
     articles: Article[];
 }
+
+export interface SourcesApiResponse {
+    status: string;
+    sources: Source[];
+}
