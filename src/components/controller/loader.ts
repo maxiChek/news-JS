@@ -1,3 +1,8 @@
+export enum HttpMethod {
+    GET = 'GET',
+    POST = 'POST',
+}
+
 export interface RequestParams {
     endpoint: string;
     options?: Record<string, string>;
@@ -18,7 +23,7 @@ class Loader {
             console.error('No callback for GET response');
         }
     ): void {
-        this.load<T>('GET', endpoint, callback, options);
+        this.load<T>(HttpMethod.GET, endpoint, callback, options);
     }
 
     private errorHandler(res: Response): Response {
@@ -42,7 +47,7 @@ class Loader {
     }
 
     private load<T>(
-        method: string,
+        method: HttpMethod,
         endpoint: string,
         callback: (data: T) => void,
         options: Record<string, string> = {}
